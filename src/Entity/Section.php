@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FormationRepository;
+use App\Repository\SectionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: FormationRepository::class)]
-class Formation
+#[ORM\Entity(repositoryClass: SectionRepository::class)]
+class Section
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,13 +21,13 @@ class Formation
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\OneToMany(mappedBy: 'formation', targetEntity: Section::class)]
-    private $sections;
 
-    public function __construct()
-    {
-        $this->sections = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'sections')]
+    private $formation;
+
+    #[ORM\OneToOne(targetEntity: Quiz::class, cascade: ['persist', 'remove'])]
+    private $quizs;
+
 
     public function getId(): ?int
     {
@@ -58,32 +58,27 @@ class Formation
         return $this;
     }
 
-    /**
-     * @return Collection<int, Section>
-     */
-    public function getSections(): Collection
+   
+    public function getFormation(): ?Formation
     {
-        return $this->sections;
+        return $this->formation;
     }
 
-    public function addSection(Section $section): self
+    public function setFormation(?Formation $formation): self
     {
-        if (!$this->sections->contains($section)) {
-            $this->sections[] = $section;
-            $section->setFormation($this);
-        }
+        $this->formation = $formation;
 
         return $this;
     }
 
-    public function removeSection(Section $section): self
+    public function getQuizs(): ?Quiz
     {
-        if ($this->sections->removeElement($section)) {
-            // set the owning side to null (unless already changed)
-            if ($section->getFormation() === $this) {
-                $section->setFormation(null);
-            }
-        }
+        return $this->quizs;
+    }
+
+    public function setQuizs(?Quiz $quizs): self
+    {
+        $this->quizs = $quizs;
 
         return $this;
     }
