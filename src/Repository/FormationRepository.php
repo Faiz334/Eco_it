@@ -48,6 +48,18 @@ class FormationRepository extends ServiceEntityRepository
     // /**
     //  * @return Formation[] Returns an array of Formation objects
     //  */
+    
+
+    public function lastTree()
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findByExampleField($value)
     {

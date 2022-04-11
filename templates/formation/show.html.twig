@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ formation.title }}{% endblock %}
+
+{% block body %}
+<div class="container ">
+    <h1>{{ formation.title }}</h1>
+
+    <br>
+    {{ formation.description|raw}}
+
+
+<div class="text-center embed-responsive embed-responsive-16by9">
+
+    <iframe class="embed-responsive-item" src="{{formation.link}}" allowfullscreen></iframe>
+
+</div>
+</div>
+
+{% endblock %}
+
+
+

@@ -19,6 +19,16 @@ class Quiz
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'Quizs')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $section;
+
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $updatedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +54,48 @@ class Quiz
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+
+    public function getSection(): ?Section
+    {
+        return $this->section;
+    }
+
+    public function setSection(?Section $section): self
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

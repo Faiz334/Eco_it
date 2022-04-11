@@ -1,0 +1,15 @@
+{% set formation_show = path('formation_show', {'slug' : formation.slug }) %}
+
+<article class="mb-5">
+    <div class="row">
+        
+        <div class="col-md-7">
+            <h2>
+                <a class="text-decoration-none" href="{{ formation_show }}">{{ formation.title }}</a>
+            <p>
+                {{ formation.createdAt|date('d M Y') }}
+            </p>
+            {{ formation.description|striptags|slice(0, 100) ~ '...' }}
+        </div>
+    </div>
+</article>

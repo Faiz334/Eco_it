@@ -25,8 +25,12 @@ class Section
     #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'sections')]
     private $formation;
 
-    #[ORM\OneToOne(targetEntity: Quiz::class, cascade: ['persist', 'remove'])]
-    private $quizs;
+
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $updatedAt;
 
 
     public function getId(): ?int
@@ -79,6 +83,35 @@ class Section
     public function setQuizs(?Quiz $quizs): self
     {
         $this->quizs = $quizs;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

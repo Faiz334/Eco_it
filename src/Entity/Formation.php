@@ -24,6 +24,18 @@ class Formation
     #[ORM\OneToMany(mappedBy: 'formation', targetEntity: Section::class)]
     private $sections;
 
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $updatedAt;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $slug;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $link;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -84,6 +96,59 @@ class Formation
                 $section->setFormation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

@@ -32,11 +32,11 @@
             </div>
         {% endif %}
 
-
+        <img src="/img/ecoit.png">
         <h1 class="h3 mb-3 mt-2 font-weight-normal">Veuillez vous connecter</h1>
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword">Mot de passe</label>
         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
         
         <input type="hidden" name="_csrf_token"
@@ -56,7 +56,7 @@
         <button class="btn btn-lg btn-primary mt-5" type="submit">
             Se connecter
         </button>
-        <p class="mt-5 mb-3 text-muted">© 2022</p>
+        <p class="mt-5 mb-3 text-muted">Eco It© 2022</p>
         </form>
         </main>
         {% endblock %}

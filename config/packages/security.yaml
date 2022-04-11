@@ -1,4 +1,9 @@
 security:
+    role_hierarchy:
+        ROLE_APPRENANT: ROLE_USER
+        ROLE_INSTRUCTEUR: ROLE_APPRENANT
+        ROLE_ADMIN: ROLE_INSTRUCTEUR
+        
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
