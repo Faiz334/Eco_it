@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Formation;
+use App\Entity\User;
 use App\Entity\Section;
 use App\Entity\Lesson;
 use App\Entity\Quiz;
@@ -79,5 +80,12 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Tout les Quiz','fas fa-question', Quiz::class),
             MenuItem::linkToCrud('Ajouter','fas fa-plus', Quiz::class)->setAction(Crud::PAGE_NEW)
         ]);
+        if ($this->isGranted('ROLE_ADMIN')){
+
+            yield MenuItem::subMenu('Utlisateur', 'fas fa-user',)->setSubItems([
+                MenuItem::linkToCrud('Tout les Utlisateurs','fas fa-user', User::class),
+                MenuItem::linkToCrud('Ajouter','fas fa-plus', User::class)->setAction(Crud::PAGE_NEW)
+        ]);
+        }
     }
 }

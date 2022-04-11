@@ -26,7 +26,7 @@ class FormationCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             SlugField::new('slug')->setTargetFieldName('title'),
-            UrlField::new('link')->setLabel('Lien(lien youtube embed via "intéger"'),
+            UrlField::new('link')->setLabel('Lien(lien youtube embed via "intéger")'),
             DateTimeField::new('createdAt')
             ->hideOnForm(),
             DateTimeField::new('updatedAt')
