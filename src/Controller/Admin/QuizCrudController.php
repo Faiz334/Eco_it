@@ -20,7 +20,7 @@ class QuizCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
+            TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             AssociationField::new('section'),
             DateTimeField::new('createdAt')
