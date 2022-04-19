@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class SectionCrudController extends AbstractCrudController
 {
@@ -23,6 +24,7 @@ class SectionCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             AssociationField::new('formation'),
+            SlugField::new('slug')->setTargetFieldName('title'),
             DateTimeField::new('createdAt')
             ->hideOnForm(),
             DateTimeField::new('updatedAt')

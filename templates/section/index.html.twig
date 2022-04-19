@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SectionController!{% endblock %}
+
+{% block body %}
+<div id="wrapper" class="d-flex">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light"></div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ ('Formation_show') }}">Formation</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ ('section_show') }}">Sections</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ ('lesson_show') }}">Leçons</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ ('Quiz_show') }}">Quiz</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Suite</i>
+
+</button>
+                        
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h1 class="mt-4"></h1>
+                    <br>
+                    <p></p>
+                   
+                    </p>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

@@ -3,20 +3,45 @@
 {% block title %}{{ formation.title }}{% endblock %}
 
 {% block body %}
-<div class="container ">
-    <h1>{{ formation.title }}</h1>
+<div id="wrapper" class="d-flex">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">{{ formation.title }}</div>
+                <div class="list-group list-group-flush">
+                {% for section in sections %}
+                <li class="list-lesson">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="">{{ section.title }}</a>
+                {% for lesson in lessons %}
+                {% if lesson.section.id is same as section.id %}
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ path('lesson_watch', { 'slug': formation.slug, 'id' : lesson.id }) }}">{{ lesson.title }}</a>
+                
+               {% endif %}
+             {% endfor %}
+              </div>  
+            </div> 
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Suite</i></button>
+                      
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h1 class="mt-4">{{ formation.title }}</h1>
+                    <br>
+                    <p>{{ formation.description|raw}}</p>
+                   <div class="text-center embed-responsive embed-responsive-16by9">
 
-    <br>
-    {{ formation.description|raw}}
-
-
-<div class="text-center embed-responsive embed-responsive-16by9">
-
-    <iframe class="embed-responsive-item" src="{{formation.link}}" allowfullscreen></iframe>
-
-</div>
-</div>
-
+                    <iframe class="embed-responsive-item" src="{{formation.link}}" allowfullscreen></ifr
+                    </p>
+                </div>
+            </div>  
+        </div> 
+{% endfor %}
+    
 {% endblock %}
 
 

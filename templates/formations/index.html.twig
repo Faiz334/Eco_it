@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eco It{% endblock %}
+{% block title %}Hello FormationsController!{% endblock %}
 
 {% block body %}
-    <main class="container">
-        <div class="row">
 
+  <main class="container">
+        <div class="row">
             <div class="col-md-8 mt-3" style="width: 100%">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">Formations récentes</h3>
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">Toutes les Formations</h3>
                 </div>
                 <div class="container">
                     {% include 'base/list.html.twig' with { formations } %}
             </div>
-        </div>
+       </div>
     </main>
+        
 {% endblock %}

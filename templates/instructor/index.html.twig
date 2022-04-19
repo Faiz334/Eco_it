@@ -6,30 +6,35 @@
     <div class="container w-25 p-3 text-center">
         <h2>Inscription</h2>
         
-            {{ form_start(registrationForm) }}
+            {{ form_start(instructor) }}
          <div class="form-outline mb-3">
-            {{ form_row(registrationForm.email) }}
+            {{ form_row(instructor.email) }}
         </div>
         <br>
          <div class="form-outline mb-3">
-            {{ form_row(registrationForm.nom) }}
+            {{ form_row(instructor.nom) }}
         </div>
         <br>
          <div class="form-outline mb-3">
-            {{ form_row(registrationForm.prenom) }}
+            {{ form_row(instructor.prenom) }}
         </div>
         <br>
         <div class="form-outline mb-3">
-            {{ form_row(registrationForm.username) }}
+            {{ form_row(instructor.username) }}
         </div>
         <br>
          <div class="form-outline mb-3">
-            {{ form_row(registrationForm.plainPassword, {
+            {{ form_row(instructor.plainPassword, {
                label: 'Password'
             }) }}
         </div>
         <br>
+         <div class="form-outline mb-3">
+            {{ form_row(instructor.description, {
+               label: 'description'
+            }) }}
+        </div>
             <button type="submit" class="btn btn-primary">S'inscrire</button>
-        {{ form_end(registrationForm) }}
+        {{ form_end(instructor) }}
     </div>
 {% endblock %}

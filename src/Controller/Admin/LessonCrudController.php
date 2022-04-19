@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class LessonCrudController extends AbstractCrudController
 {
@@ -25,6 +26,7 @@ class LessonCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             AssociationField::new('section'),
+            SlugField::new('slug')->setTargetFieldName('title'),
             TextField::new('imageFile')
                 ->setFormType(VichImageType::class)
                 ->onlyWhenCreating(),

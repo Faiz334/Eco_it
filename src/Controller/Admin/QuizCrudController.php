@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class QuizCrudController extends AbstractCrudController
 {
@@ -23,6 +24,7 @@ class QuizCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description'),
             AssociationField::new('section'),
+            SlugField::new('slug')->setTargetFieldName('title'),
             DateTimeField::new('createdAt')
             ->hideOnForm(),
             DateTimeField::new('updatedAt')
