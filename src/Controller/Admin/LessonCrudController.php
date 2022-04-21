@@ -27,9 +27,9 @@ class LessonCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             AssociationField::new('section'),
             SlugField::new('slug')->setTargetFieldName('title'),
+            TextField::new('video')->setLabel('Video youtube via lien "intégrer"')->hideOnIndex(),
             TextField::new('imageFile')
-                ->setFormType(VichImageType::class)
-                ->onlyWhenCreating(),
+                ->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('file')
                 ->setBasePath('/uploads/lessons/')
                 ->onlyOnIndex(),

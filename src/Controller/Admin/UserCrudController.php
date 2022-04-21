@@ -12,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class UserCrudController extends AbstractCrudController
 {
@@ -27,7 +27,7 @@ class UserCrudController extends AbstractCrudController
         return [
             TextField::new('username'),
             TextField::new('email'),
-            TextField::new('password'),
+            TextField::new('password')->hideOnIndex(),
             TextField::new('nom'),
             TextField::new('prenom'),
             TextareaField::new('description'),

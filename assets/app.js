@@ -7,10 +7,15 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
+import jquery from 'jquery';
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
 
+
+
+ 
+global.$ = global.jQuery = $;
 
 
 import { Tooltip, Toast, Popover } from 'bootstrap';
@@ -36,4 +41,3 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
-

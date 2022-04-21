@@ -1,21 +1,32 @@
+
 @import "~bootstrap/scss/bootstrap";
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
 
+h1, h2, h3, h4 {
+    font-family: bebas neue;
+}
+
 body {
     
     background-color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: Dosis;
     font-size: 14px;
     letter-spacing: 0.01em;
     color: #39464e;
   }
+
+.card {
+    box-shadow: 5px 5px 5px rgba(8, 100, 16, 0.432);
+    border-radius: 20px;
+}
   
   #wrapper {
     overflow-x: hidden;
 }
+
 
 #sidebar-wrapper {
     min-height: 100vh;
