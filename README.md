@@ -22,7 +22,7 @@ git clone https://github.com/Faiz334/Eco_it.git
 
 ```bash
 # Déplacement dans le dossier
-cd mediatheque
+cd eco_it
 # Installation des dépendances
 composer install
 # Création de la base de données
