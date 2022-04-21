@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use DateTime;
+use App\Entity\User;
 use App\Entity\Formation;
 use App\Entity\Section;
 use App\Entity\Lesson;
@@ -22,17 +23,25 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function setEntityCreatedAt(BeforeEntityPersistedEvent $event)
+    public function setEntityCreatedAt(BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
+
+        if ($entity instanceof User){
+            return;
+        }
 
         $now = new DateTime('now');
         $entity->setCreatedAt($now);
     }
 
-    public function setEntityUpdatedAt(BeforeEntityUpdatedEvent $event)
+    public function setEntityUpdatedAt(BeforeEntityUpdatedEvent $event): void
     {
         $entity = $event->getEntityInstance();
+
+        if ($entity instanceof User){
+            return;
+        }
 
         $now = new DateTime('now');
         $entity->setUpdatedAt($now);
