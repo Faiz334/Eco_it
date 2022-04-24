@@ -48,7 +48,10 @@ php bin/console server:start
 
 
 compte :
-admin = admin33@admin33.fr
-instructeur = instructeur33@instructeur33.fr
+admin = admin@admin.fr
+mdp=admin33
+
+instructeur = instructeur@instructeur.fr
+mdp=instructeur33
 
 
