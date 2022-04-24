@@ -44,3 +44,11 @@ symfony server:start
 composer require symfony/web-server-bundle --dev
 php bin/console server:start
 ```
+
+
+
+compte :
+admin = admin33@admin33.fr
+instructeur = instructeur33@instructeur33.fr
+
+
