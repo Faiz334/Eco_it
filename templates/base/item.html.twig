@@ -1,16 +1,12 @@
 {% set formation_show = path('formation_show', {'slug' : formation.slug }) %}
 
 
- <div class="container">
-    <div class="col-sm-8 mb-4">
- 
-    <div class="card" style="width: 25rem display: grid">
-        
-        <div class="card-body ">
-            <h2 class="card-title">{{ formation.title }}</h2>
-            <p class="card-text">{{ formation.description|striptags|slice(0, 250) ~ '...' }}</p>
-            <a href="{{ formation_show }}" class="btn btn-primary">Suivre la formation</a>
-        </div>
+  <a class="card1" href="{{ formation_show }}">
+    <h3>{{ formation.title }}</h3>
+    <p class="small">{{ formation.description|striptags|slice(0, 250) ~ '...' }}</p>
+    <div class="go-corner" href="{{ formation_show }}">
+      <div class="go-arrow">
+        →
+      </div>
     </div>
-    </div>
-</div>
+  </a>
