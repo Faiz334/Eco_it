@@ -3,19 +3,67 @@
 {% block title %}Toutes les Formations{% endblock %}
 
 {% block body %}
-
-  <main class="container">
-        <div class="row">
-            <div class="col-md-8 mt-3" style="width: 100%">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">Toutes les Formations</h3> 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="text" id="searchBar" class="form-control" placeholder="Recherche..." onkeyup="">
-      </form>
-      </div>
-                <div class="container">
-                    {% include 'base/list.html.twig' with { formations } %}
+    <div class="bg-gradient py-4 mb-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold text-success mb-3">Nos Formations</h1>
+                    <p class="lead">Découvrez toutes nos formations pour devenir un acteur du changement écologique</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="search-container">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fas fa-search text-success"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                id="search-formation"
+                                class="form-control border-start-0 ps-0" 
+                                placeholder="Rechercher une formation..."
+                                aria-label="Rechercher une formation"
+                            >
+                        </div>
+                    </div>
+                </div>
             </div>
-       </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success rounded-pill" id="formation-count">
+                            {{ formations|length }} formations
+                        </span>
+                        <div class="vr"></div>
+                        <div class="text-muted small">
+                            <i class="fas fa-filter me-1"></i> Filtrer par niveau
+                        </div>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-success active">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-success">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="formations-container" class="formation-grid mb-4">
+                    {% if formations is empty %}
+                        <div class="alert alert-info w-100">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Aucune formation disponible pour le moment.
+                        </div>
+                    {% else %}
+                        {% include 'base/list.html.twig' with { formations } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </main>
-        
 {% endblock %}

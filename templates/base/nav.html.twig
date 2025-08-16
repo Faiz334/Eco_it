@@ -1,56 +1,83 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-success">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-        <img src="/img/ecoitNav.png" class="navbar-brand-img" alt="...">
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="/img/ecoitNav.png" class="navbar-brand-img" alt="Eco It Logo">
+      <span class="ms-2 d-none d-sm-inline">Eco It</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{ app.request.get('_route') == 'app_home' ? 'active' }}" href="/">
+            <i class="fas fa-home me-1"></i> Accueil
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('formation_show1') }}">Formation</a>
+          <a class="nav-link {{ app.request.get('_route') == 'formation_show1' ? 'active' }}" href="{{ path('formation_show1') }}">
+            <i class="fas fa-graduation-cap me-1"></i> Formation
+          </a>
         </li>
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-        <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_instructeur') }}">Devenir Instructeur</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_instructeur') }}">
+              <i class="fas fa-chalkboard-teacher me-1"></i> Devenir Instructeur
+            </a>
+          </li>
         {% endif %}
         {% if is_granted('ROLE_INSTRUCTEUR') %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('admin') }}">Admin</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link {{ app.request.get('_route') == 'admin' ? 'active' }}" href="{{ path('admin') }}">
+              <i class="fas fa-cog me-1"></i> Admin
+            </a>
+          </li>
         {% endif %}
       </ul>
-    </div>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="text" id="search-formation" class="form-control" placeholder="Recherche..." onkeyup="searchFormation()">
-      </form>
-      <div style="margin-top: 20px">
-        <div id="result-search"></div>
-      </div>
-      {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-      <li class="nav item">
-          <a class="nav-link btn btn-info me-2" href="{{ path('app_login') }}">Se connecter</a>
-      </li>
-      <li class="nav item">
-          <a class="nav-link btn btn-warning" href="{{ path('app_register') }}">S'inscrire</a>
-      </li>
-      {% else %}
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{app.user.username}}
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-            <a class="dropdown-item" href="{{ path('app_logout') }}">Deconnexion</a>
-            </li>
-          </ul>
-      {% endif %}
+      
+      <div class="search-wrapper me-3">
+        <div class="input-group">
+          <input type="text" 
+                 id="searchhome" 
+                 class="form-control" 
+                 placeholder="Rechercher une formation..." 
+                 onkeyup="searchFormation()"
+                 aria-label="Recherche">
+          <div id="result-search" class="position-absolute bg-white w-100 mt-2 rounded-3 shadow-sm" style="display:none;z-index:1000;top:100%"></div>
         </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+          <a class="btn btn-info" href="{{ path('app_login') }}">
+            <i class="fas fa-sign-in-alt me-1"></i> Connexion
+          </a>
+          <a class="btn btn-warning" href="{{ path('app_register') }}">
+            <i class="fas fa-user-plus me-1"></i> Inscription
+          </a>
+        {% else %}
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" 
+                    type="button" 
+                    id="navbarDropdownMenuLink" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+              <i class="fas fa-user-circle me-1"></i> {{app.user.username}}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" 
+                aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('app_logout') }}">
+                  <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
+                </a>
+              </li>
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </nav>
 

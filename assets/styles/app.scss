@@ -1,52 +1,174 @@
-
 @import "~bootstrap/scss/bootstrap";
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+// Variables
+$primary: #198754;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
 
+// Custom variables
+$navbar-height: 70px;
+$border-radius-xl: 1rem;
+$box-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+$box-shadow-hover: 0 .5rem 1rem rgba(0,0,0,.15);
 
-
-h1, h2, h3, h4 {
-    font-family: Martian Mono;
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+// Couleurs principales
+$green: #198754;
+$bg-light: #fff;
+$text-dark: #39464e;
+$text-light: #fff;
+
+// Fonts (à importer dans le HTML pour de meilleures perfs)
+// @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;700&display=swap');
 
 body {
-    
-    background-color: #fff;
-    font-family: Dosis;
-    font-size: 14px;
+    background-color: $bg-light;
+    font-family: 'Dosis', Arial, sans-serif;
+    font-size: 15px;
     letter-spacing: 0.01em;
-    color: #39464e;
+    color: $text-dark;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Martian Mono', monospace;
+}
+
+// Navbar styling
+.navbar {
+  height: $navbar-height;
+  background: linear-gradient(45deg, $primary, darken($primary, 10%)) !important;
+  box-shadow: $box-shadow-sm;
+  position: relative;
+  z-index: 1030; // Valeur plus élevée que le contenu standard
+
+  .navbar-brand-img {
+    height: 40px;
+    transition: transform 0.3s ease;
+    &:hover { transform: scale(1.05); }
   }
 
+  .nav-link {
+    position: relative;
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
 
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: $warning;
+      transition: all 0.3s ease;
+    }
 
+    &:hover, &.active {
+      color: white !important;
+      &:after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+
+  .btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: $border-radius-xl;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $box-shadow-hover;
+    }
+  }
+
+  .dropdown-menu {
+    animation: fadeIn 0.3s ease;
+    border: none;
+    box-shadow: $box-shadow-hover;
+  }
+
+  .search-wrapper {
+    position: relative;
+    
+    .form-control {
+      border-radius: $border-radius-xl;
+      padding-left: 1rem;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      
+      &::placeholder {
+        color: rgba(255,255,255,0.7);
+      }
+      
+      &:focus {
+        background: white;
+        color: $dark;
+        box-shadow: $box-shadow-hover;
+      }
+    }
+
+    #result-search {
+      animation: fadeIn 0.3s ease;
+    }
+  }
+
+  .collapse {
+    @media (max-width: 991.98px) { // Format mobile et tablette
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: $primary;
+      padding: 1rem;
+      border-radius: 0 0 $border-radius-xl $border-radius-xl;
+      box-shadow: $box-shadow-sm;
+    }
+  }
+
+  .navbar-collapse {
+    z-index: 1030; // Même z-index que la navbar
+  }
+}
 
 .card {
-    box-shadow: 5px 5px 5px rgba(8, 100, 16, 0.432);
+    box-shadow: 0 4px 16px rgba(8, 100, 16, 0.12);
     border-radius: 20px;
-}
-  
-  #wrapper {
-    overflow-x: hidden;
+    border: none;
+    background: #fff;
 }
 
+#wrapper {
+    overflow-x: hidden;
+}
 
 #sidebar-wrapper {
     min-height: 100vh;
     margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-}
-
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-    width: 15rem;
+    .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.2rem;
+    }
+    .list-group {
+        width: 15rem;
+    }
 }
 
 #page-content-wrapper {
@@ -61,20 +183,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     #sidebar-wrapper {
         margin-left: 0;
     }
-
     #page-content-wrapper {
         min-width: 0;
         width: 100%;
     }
-
     body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         margin-left: -15rem;
     }
 }
 
-/**card anim**/
-
-
+// Card animation
 .container {
     width: 100%;
     height: 100%;
@@ -82,89 +200,221 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-  }
-  
-  h3 {
-    color: #262626;
-    font-size: 17px;
-    line-height: 24px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  
-  p {
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #666666;
-  
-    &.small {
-      font-size: 14px;
-    }
-  }
-  
-  .go-corner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    background-color:  $green;
-    border-radius: 0 4px 0 32px;
-  }
-  
-  .go-arrow {
-    margin-top: -4px;
-    margin-right: -4px;
-    color: white;
-    font-family: courier, sans;
-  }
-  
-  .card1 {
+    gap: 1.5rem; // Ajoute un espacement uniforme entre les cartes
+}
+
+.card1 {
     display: block;
     position: relative;
-    max-width: 262px;
-    background-color: #f2f8f9;
-    border-radius: 4px;
-    padding: 32px 24px;
-    margin: 12px;
+    width: 320px;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
-  
-    &:before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: -16px;
-      right: -16px;
-      background:  $green;
-      height: 32px;
-      width: 32px;
-      border-radius: 32px;
-      transform: scale(1);
-      transform-origin: 50% 50%;
-      transition: transform 0.25s ease-out;
-    }
-  
-    &:hover:before {
-      transform: scale(21);
-    }
-  }
-  
-  .card1:hover {
-    p {
-      transition: all 0.3s ease-out;
-      color: rgba(255, 255, 255, 0.8);
-    }
+    box-shadow: 0 4px 15px rgba($primary, 0.1);
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+
     h3 {
-      transition: all 0.3s ease-out;
-      color: #ffffff;
+        color: $primary;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
     }
-  }
+
+    p {
+        color: $text-dark;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: $secondary;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+
+        i {
+            color: $primary;
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: -16px;
+        right: -16px;
+        background: linear-gradient(135deg, $primary, darken($primary, 10%));
+        height: 32px;
+        width: 32px;
+        border-radius: 32px;
+        transform: scale(1);
+        transform-origin: 50% 50%;
+        transition: transform 0.4s ease-out;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba($primary, 0.2);
+
+        &:before {
+            transform: scale(25);
+        }
+
+        h3 {
+            color: white;
+            transition: all 0.3s ease-out;
+        }
+
+        p, .meta {
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease-out;
+        }
+
+        .meta i {
+            color: $warning;
+            transition: all 0.3s ease-out;
+        }
+    }
+}
+
+// Styles pour la page formations
+.bg-gradient {
+    background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary, 0.05) 100%);
+}
+
+.search-container {
+    .input-group {
+        box-shadow: 0 3px 15px rgba($primary, 0.1);
+        border-radius: $border-radius-xl;
+        overflow: hidden;
+
+        .input-group-text {
+            border-color: #dee2e6;
+        }
+
+        .form-control {
+            border-color: #dee2e6;
+            font-size: 1rem;
+
+            &:focus {
+                box-shadow: none;
+                border-color: $primary;
+
+                + .input-group-text {
+                    border-color: $primary;
+                }
+            }
+        }
+    }
+}
+
+.formation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // Exactement 3 colonnes
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+// Responsive adjustments
+@media (max-width: 992px) { // Tablette
+    .formation-grid {
+        grid-template-columns: repeat(2, 1fr); // 2 colonnes sur tablette
+    }
+}
+
+@media (max-width: 768px) { // Mobile
+    .formation-grid {
+        grid-template-columns: 1fr; // 1 colonne sur mobile
+    }
+}
+
+.card1 {
+    width: 100%; // La carte prend toute la largeur de sa colonne
+    margin: 0; // On enlève les marges car on utilise gap
+    // ...rest of card1 styles...
+}
+
+// Animation pour le filtrage
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card1 {
+    animation: fadeInUp 0.4s ease;
+}
+
+// Footer modernisé
+footer {
+    background: $green;
+    color: $text-light;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+}
+
+// Dark mode prêt pour le futur
+.dark-mode {
+    background: #222;
+    color: $text-light;
+    .card, .card1 { background: #333; }
+    .navbar, footer { background: #111 !important; }
+}
+
+// Styles pour la page d'accueil
+.bg-gradient {
+    background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary, 0.05) 100%);
+}
+
+.features {
+    .card {
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-5px);
+        }
+        
+        .fa-2x {
+            transition: transform 0.3s ease;
+        }
+        
+        &:hover .fa-2x {
+            transform: scale(1.1);
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    .card1 {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
 
 

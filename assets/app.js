@@ -41,25 +41,43 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
-/* --recherche bar
 
-const searchBar = document.querySelector("#searchBar");
 
-searchBar.addEventListener("keyup", (e) => {
-    const searchedLetters = e.target.value;
-    const cards = document.querySelectorAll("card1");
-    filterElements(searchedLetters, cards);
-});
+function searchFormation() {
+    const searchInput = document.getElementById('search-formation');
+    const formationCards = document.querySelectorAll('.card1');
+    const countElement = document.getElementById('formation-count');
 
-function filterElements(Letters, elements){
+    if (!searchInput || !formationCards.length) return;
 
-    if(Letters.length >2){
-        for (let i = 0; i < elements.length; i++){
-            if(elements[i].textContent.toLowerCase().includes(letters)){
-                elements[i].style.display = "block";
-            } else {
-                elements[i].style.display = "none";
-            }
+    // Log pour debug
+    console.log('Search initialized with:', {
+        searchInput: searchInput,
+        cardsCount: formationCards.length
+    });
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        formationCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+            
+            const isVisible = searchTerm === '' || 
+                            title.includes(searchTerm) || 
+                            description.includes(searchTerm);
+            
+            card.style.display = isVisible ? 'block' : 'none';
+            if (isVisible) visibleCount++;
+        });
+
+        // Update formation count
+        if (countElement) {
+            countElement.textContent = `${visibleCount} formation${visibleCount > 1 ? 's' : ''}`;
         }
-    }
-}*/
+    });
+}
+
+// Initialize search when DOM is loaded
+document.addEventListener('DOMContentLoaded', searchFormation);
