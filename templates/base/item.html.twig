@@ -6,5 +6,5 @@
         <span><i class="fas fa-clock"></i> {{ formation.duration ?? '2h' }}</span>
         <span><i class="fas fa-user-graduate"></i> {{ formation.level ?? 'Débutant' }}</span>
     </div>
-    <p>{{ formation.description|striptags|slice(0, 120) ~ '...' }}</p>
+    <p>{{ formation.description|striptags|slice(0, 200) ~ '...' }}</p>
 </a>
