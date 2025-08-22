@@ -29,21 +29,25 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-                <div class="container-fluid">
-                    <h1 class="mt-4">{{ formation.title }}</h1>
-                    <br>
-                    <p>{{ formation.description|raw}}</p>
-                   <div class="text-center embed-responsive embed-responsive-16by9">
-
-                    <iframe width="400" height="215" class="embed-responsive-item" src="{{formation.link}}" allowfullscreen></iframe>
-                    
-                    </p>
+<div class="container-fluid py-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="bi bi-mortarboard fs-3 text-primary me-2"></i>
+                        <h1 class="h2 mb-0">{{ formation.title }}</h1>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="lead">{{ formation.description|raw }}</p>
+                   <div class="ratio ratio-16x9 mb-4 rounded-3 overflow-hidden shadow-sm">
+                    <iframe class="border-0" src="{{ formation.link }}" allowfullscreen></iframe>
+                   </div>
+                   <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                        <a href="#" class="btn btn-primary">
+                            Continue <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                   </div>
                 </div>
-            </div>  
+            </div>
         </div> 
 {% endfor %}
     
 {% endblock %}
-
-
-
