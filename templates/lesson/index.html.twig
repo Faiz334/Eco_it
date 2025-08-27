@@ -3,22 +3,40 @@
 {% block title %}{{ lesson.title }}{% endblock %}
 
 {% block body %}
+<div class="bg-gradient py-5 mb-4">
+    <div class="container">
+        <h1 class="display-5 fw-bold text-success mb-2">{{ lesson.title }}</h1>
+        <p class="lead text-muted mb-0">{{ lesson.description|striptags|slice(0, 140) ~ '...' }}</p>
+    </div>
+</div>
 
-                <div class="container-fluid">
-                    <h1 class="mt-4">{{ lesson.title }}</h1>
-                    <br>
-                    <p>{{ lesson.description|raw}}</p>
-                   <div class="text-center embed-responsive embed-responsive-16by9">
-
-                    <iframe width="400" height="215" class="embed-responsive-item" src="{{lesson.video}}" allowfullscreen></iframe>
-                    <br>
-                    <div class="formation-img">
-                    <img width="400" height="215" src="/uploads/lessons/{{ lesson.File}}">
-                   
-                   
-                    </p>
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    {% if lesson.video %}
+                        <div class="ratio ratio-16x9 mb-4 rounded-3 overflow-hidden shadow-sm">
+                            <iframe class="border-0" src="{{ lesson.video }}" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                    {% if lesson.File %}
+                        <div class="text-center mb-4">
+                            <img src="/uploads/lessons/{{ lesson.File }}" alt="Ressource de la leçon" class="img-fluid rounded shadow-sm" style="max-height:320px;">
+                        </div>
+                    {% endif %}
+                    <h2 class="h4 fw-bold mb-3 text-success"><i class="fas fa-info-circle me-2"></i>Description détaillée</h2>
+                    <div class="mb-3">
+                        {{ lesson.description|raw }}
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ path('formation_show', {'slug': lesson.section.formation.slug}) }}" class="btn btn-outline-success">
+                            <i class="fas fa-arrow-left me-2"></i>Retour à la formation
+                        </a>
+                    </div>
                 </div>
-            </div>  
-        </div> 
-    
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

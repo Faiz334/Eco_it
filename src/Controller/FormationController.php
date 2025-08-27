@@ -6,6 +6,7 @@ use App\Entity\Formation;
 use App\Entity\User;
 use App\Entity\Lesson;
 use App\Entity\Section;
+use App\Repository\SectionRepository;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

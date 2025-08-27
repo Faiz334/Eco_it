@@ -149,7 +149,7 @@ h1, h2, h3, h4 {
 
 .card {
     box-shadow: 0 4px 16px rgba(8, 100, 16, 0.12);
-    border-radius: 20px;
+    border-radius: 1.2rem;
     border: none;
     background: #fff;
 }
@@ -292,7 +292,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
 // Styles pour la page formations
 .bg-gradient {
-    background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($primary, 0.05) 100%);
+    background: linear-gradient(135deg, rgba($primary, 0.08) 0%, rgba($primary, 0.01) 100%);
 }
 
 .search-container {
@@ -415,6 +415,40 @@ footer {
         width: 100%;
         margin: 0.5rem 0;
     }
+}
+
+.card {
+    border-radius: 1.2rem;
+}
+
+.card-header {
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    &:last-child { border-bottom: none; }
+}
+
+.list-group-item strong {
+    color: $primary;
+}
+
+a.text-success:hover {
+    text-decoration: underline;
+}
+
+.ratio {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba($primary, 0.08);
+}
+
+.img-fluid {
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba($primary, 0.08);
 }
 
 

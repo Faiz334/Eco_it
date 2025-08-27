@@ -78,17 +78,7 @@ class Section
         return $this;
     }
 
-    public function getQuizs(): ?Quiz
-    {
-        return $this->quizs;
-    }
 
-    public function setQuizs(?Quiz $quizs): self
-    {
-        $this->quizs = $quizs;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

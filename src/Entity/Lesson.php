@@ -26,7 +26,7 @@ class Lesson
     private $description;
 
     #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'lessons')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $section;
 
     #[ORM\Column(type: 'datetime')]
