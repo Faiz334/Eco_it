@@ -3,49 +3,50 @@
 {% block title %}Devenir instructeur{% endblock %}
 
 {% block body %}
-
-<div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Devenir instructeur</h2>
-
-                     {{ form_start(instructor) }}
-                  <div class="form-outline mb-3">
-                     {{ form_row(instructor.email) }}
-                 </div>
-
-                  <div class="form-outline mb-3">
-                     {{ form_row(instructor.nom) }}
-                 </div>
-
-                  <div class="form-outline mb-3">
-                     {{ form_row(instructor.prenom) }}
-                 </div>
-
-                 <div class="form-outline mb-3">
-                     {{ form_row(instructor.username) }}
-                 </div>
-
-                  <div class="form-outline mb-3">
-                     {{ form_row(instructor.plainPassword, {
-                        label: 'Password'
-                     }) }}
-                 </div>
-
-                  <div class="form-outline mb-3">
-                     {{ form_row(instructor.description, {
-                        label: 'Description'
-                     }) }}
-                 </div>
-                   <div class="d-flex justify-content-center">
-                     <button type="submit" class="btn btn-primary">Devenir Instructeur</button>
-                 {{ form_end(instructor) }}
-            </div>
-            </div>
-        </div>
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-gradient">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-5">
+            <h2 class="text-center mb-4 fw-bold text-success">
+              <i class="fas fa-chalkboard-teacher me-2"></i>Devenir instructeur
+            </h2>
+            {{ form_start(instructor) }}
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>
+                {{ form_widget(instructor.email, {'attr': {'class': 'form-control form-control-lg'}}) }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-user me-2"></i>Nom</label>
+                {{ form_widget(instructor.nom, {'attr': {'class': 'form-control form-control-lg'}}) }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-user me-2"></i>Prénom</label>
+                {{ form_widget(instructor.prenom, {'attr': {'class': 'form-control form-control-lg'}}) }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-user-tag me-2"></i>Nom d'utilisateur</label>
+                {{ form_widget(instructor.username, {'attr': {'class': 'form-control form-control-lg'}}) }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-lock me-2"></i>Mot de passe</label>
+                {{ form_widget(instructor.plainPassword, {'attr': {'class': 'form-control form-control-lg'}}) }}
+              </div>
+              <div class="mb-3">
+                <label class="form-label"><i class="fas fa-info-circle me-2"></i>Description</label>
+                {{ form_widget(instructor.description, {'attr': {'class': 'form-control form-control-lg', 'rows': 3}}) }}
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">
+                  <i class="fas fa-chalkboard-teacher me-2"></i>Devenir Instructeur
+                </button>
+              </div>
+            {{ form_end(instructor) }}
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}

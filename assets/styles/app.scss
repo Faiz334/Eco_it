@@ -149,9 +149,12 @@ h1, h2, h3, h4 {
 
 .card {
     box-shadow: 0 4px 16px rgba(8, 100, 16, 0.12);
-    border-radius: 1.2rem;
+    border-radius: 1.5rem;
     border: none;
     background: #fff;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #wrapper {
@@ -292,7 +295,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
 // Styles pour la page formations
 .bg-gradient {
-    background: linear-gradient(135deg, rgba($primary, 0.08) 0%, rgba($primary, 0.01) 100%);
+  background: linear-gradient(135deg, rgba($primary, 0.08) 0%, rgba($primary, 0.01) 100%);
 }
 
 .search-container {
@@ -418,7 +421,7 @@ footer {
 }
 
 .card {
-    border-radius: 1.2rem;
+    border-radius: 1.5rem;
 }
 
 .card-header {
@@ -449,6 +452,17 @@ a.text-success:hover {
 .img-fluid {
     border-radius: 1rem;
     box-shadow: 0 2px 8px rgba($primary, 0.08);
+}
+
+.form-label {
+  font-weight: 600;
+  color: $primary;
+}
+
+.btn-success, .btn-primary {
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  font-weight: 600;
 }
 
 
