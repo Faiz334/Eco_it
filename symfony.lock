@@ -1,9 +1,9 @@
 {
     "doctrine/annotations": {
-        "version": "1.13",
+        "version": "1.14",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "branch": "main",
             "version": "1.10",
             "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
         }
@@ -150,7 +150,7 @@
         "version": "6.2",
         "recipe": {
             "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "branch": "main",
             "version": "5.2",
             "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
         },
@@ -360,9 +360,6 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.25.0"
     },
-    "symfony/polyfill-php81": {
-        "version": "v1.25.0"
-    },
     "symfony/polyfill-uuid": {
         "version": "v1.25.0"
     },
@@ -470,6 +467,18 @@
     },
     "symfony/uid": {
         "version": "v6.0.3"
+    },
+    "symfony/ux-twig-component": {
+        "version": "2.30",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.13",
+            "ref": "f367ae2a1faf01c503de2171f1ec22567febeead"
+        },
+        "files": [
+            "./config/packages/twig_component.yaml"
+        ]
     },
     "symfony/validator": {
         "version": "6.0",
